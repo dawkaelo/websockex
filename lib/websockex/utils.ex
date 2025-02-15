@@ -90,6 +90,9 @@ defmodule WebSockex.Utils do
     def sys_log(debug), do: :sys.get_debug(:log, debug, [])
   end
 
+  # HACK SILENCED THESE NOISY LOGS
+  defp print_event(_io_dev, _event, _state), do: :ok
+
   defp print_event(io_dev, {:in, :frame, frame}, %{name: name}) do
     IO.puts(io_dev, "*DBG* #{inspect(name)} received frame: #{inspect(frame)}")
   end
